@@ -29,7 +29,7 @@ public class Main {
         double totalValorImoveis = 0;
         double totalValorFinanciamentos = 0;
 
-        // Mostrando detalhes de cada financiamento no ArrayList
+        // Mostrando detalhes dos financiamentos
         int i = 1;
         for(Financiamento f : financiamentos) {
             System.out.println("Financiamento " + i + " – valor do imóvel: R$ " + df.format(f.getValorImovel()) +
@@ -39,7 +39,7 @@ public class Main {
             i++;
         }
 
-        // Somando com o financiamento inserido pelo usuário
+        // Somando
         totalValorImoveis += financiamentoUsuario.getValorImovel();
         totalValorFinanciamentos += financiamentoUsuario.calcularTotalPagamento();
 

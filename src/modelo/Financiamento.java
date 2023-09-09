@@ -6,7 +6,7 @@ import modelo.Financiamento;
 
 public class Financiamento {
     private double valorImovel;
-    private int prazoFinanciamento; // em anos
+    private int prazoFinanciamento; 
     private double taxaJurosAnual;
 
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
@@ -16,7 +16,7 @@ public class Financiamento {
     }
 
     public double calcularPagamentoMensal() {
-        int prazoEmMeses = prazoFinanciamento * 12; // Convertendo anos em meses
+        int prazoEmMeses = prazoFinanciamento * 12; 
         return (valorImovel / prazoEmMeses) * (1 + (taxaJurosAnual / 100 / 12)); 
     }
 
@@ -38,7 +38,7 @@ public class Financiamento {
         return taxaJurosAnual;
     }
 
-    // Método para mostrar na tela uma mensagem contendo os dados do financiamento
+    // Método para mostrar na tela os dados do financiamento
     public void exibirDadosFinanciamento() {
         DecimalFormat df = new DecimalFormat("#.00");
 
