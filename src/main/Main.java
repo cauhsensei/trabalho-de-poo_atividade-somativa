@@ -1,49 +1,79 @@
 package main;
 
+import modelo.Casa;
+import modelo.Apartamento;
+import modelo.Terreno;
 import modelo.Financiamento;
 import util.InterfaceUsuario;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
-        DecimalFormat df = new DecimalFormat("#.00");
+    DecimalFormat df = new DecimalFormat("#.00");
+    Scanner scanner = new Scanner(System.in);
+    
+    // Solicitando dados para CASA:
+    System.out.println("Dados para financiamento de Casa:");
+    System.out.print("Valor do imóvel (Casa): ");
+    double valorImovelCasa = scanner.nextDouble();
+    System.out.print("Prazo de financiamento (em anos): ");
+    int prazoFinanciamentoCasa = scanner.nextInt();
+    System.out.print("Taxa de juros anual (em %): ");
+    double taxaJurosCasa = scanner.nextDouble();
+    System.out.print("Tamanho da área construída: ");
+    double tamanhoAreaConstruida = scanner.nextDouble();
+    System.out.print("Tamanho do terreno: ");
+    double tamanhoTerreno = scanner.nextDouble();
+    Casa financiamentoCasa = new Casa(valorImovelCasa, prazoFinanciamentoCasa, taxaJurosCasa, tamanhoAreaConstruida, tamanhoTerreno);
+    
+    // Solicitando dados para APARTAMENTO:
+    System.out.println("\nDados para financiamento de Apartamento:");
+    System.out.print("Valor do imóvel (Apartamento): ");
+    double valorImovelApt = scanner.nextDouble();
+    System.out.print("Prazo de financiamento (em anos): ");
+    int prazoFinanciamentoApt = scanner.nextInt();
+    System.out.print("Taxa de juros anual (em %): ");
+    double taxaJurosApt = scanner.nextDouble();
+    System.out.print("Número de vagas na garagem: ");
+    int numeroVagasGaragem = scanner.nextInt();
+    System.out.print("Número do andar: ");
+    int numeroAndar = scanner.nextInt();
+    Apartamento financiamentoApt = new Apartamento(valorImovelApt, prazoFinanciamentoApt, taxaJurosApt, numeroVagasGaragem, numeroAndar);
+    
+    // Solicitando dados para TERRENO:
+    System.out.println("\nDados para financiamento de Terreno:");
+    System.out.print("Valor do imóvel (Terreno): ");
+    double valorImovelTerreno = scanner.nextDouble();
+    System.out.print("Prazo de financiamento (em anos): ");
+    int prazoFinanciamentoTerreno = scanner.nextInt();
+    System.out.print("Taxa de juros anual (em %): ");
+    double taxaJurosTerreno = scanner.nextDouble();
+    System.out.print("Tipo de zona (residencial/comercial): ");
+    String tipoZona = scanner.next();
+    Terreno financiamentoTerreno = new Terreno(valorImovelTerreno, prazoFinanciamentoTerreno, taxaJurosTerreno, tipoZona);
 
-        // Parte que pega informações do usuário
-        InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-        
-        double valorImovel = interfaceUsuario.pedirValorImovel();
-        int prazoFinanciamento = interfaceUsuario.pedirPrazoFinanciamento();
-        double taxaJuros = interfaceUsuario.pedirTaxaJuros();
-        
-        Financiamento financiamentoUsuario = new Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
-        financiamentoUsuario.exibirDadosFinanciamento();
+    // Resumo:
+    System.out.println("\n--- RESUMO DOS FINANCIAMENTOS ---");
+    
+    System.out.println("\nFinanciamento Casa:");
+    financiamentoCasa.exibirDadosFinanciamento();
+    
+    System.out.println("\nFinanciamento Apartamento:");
+    financiamentoApt.exibirDadosFinanciamento();
+    
+    System.out.println("\nFinanciamento Terreno:");
+    financiamentoTerreno.exibirDadosFinanciamento();
 
-        ArrayList<Financiamento> financiamentos = new ArrayList<>();
-        financiamentos.add(new Financiamento(200000, 20, 10.0));
-        financiamentos.add(new Financiamento(300000, 25, 26.6667));
-        financiamentos.add(new Financiamento(150000, 15, 3.3333));
-        financiamentos.add(new Financiamento(250000, 30, 10.0));
+    // Somando os valores totais:
+    double totalFinanciado = financiamentoCasa.calcularTotalPagamento() + financiamentoApt.calcularTotalPagamento() + financiamentoTerreno.calcularTotalPagamento();
 
-        double totalValorImoveis = 0;
-        double totalValorFinanciamentos = 0;
+    System.out.println("\nValor total financiado (de todos os imóveis): R$ " + df.format(totalFinanciado));
 
-        // Mostrando detalhes dos financiamentos
-        int i = 1;
-        for(Financiamento f : financiamentos) {
-            System.out.println("Financiamento " + i + " – valor do imóvel: R$ " + df.format(f.getValorImovel()) +
-                               ", valor do financiamento: R$ " + df.format(f.calcularTotalPagamento()));
-            totalValorImoveis += f.getValorImovel();
-            totalValorFinanciamentos += f.calcularTotalPagamento();
-            i++;
-        }
+    scanner.close();
+}
 
-        // Somando
-        totalValorImoveis += financiamentoUsuario.getValorImovel();
-        totalValorFinanciamentos += financiamentoUsuario.calcularTotalPagamento();
-
-        System.out.println("Total de todos os imóveis: R$ " + df.format(totalValorImoveis));
-        System.out.println("Total de todos os financiamentos: R$ " + df.format(totalValorFinanciamentos));
-    }
 }

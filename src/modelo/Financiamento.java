@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import modelo.Financiamento;
 
 
-public class Financiamento {
+public abstract class Financiamento {
     private double valorImovel;
     private int prazoFinanciamento; 
     private double taxaJurosAnual;
