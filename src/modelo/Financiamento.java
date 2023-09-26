@@ -1,10 +1,11 @@
 package modelo;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import modelo.Financiamento;
 
 
-public abstract class Financiamento {
+public abstract class Financiamento implements Serializable {
     private double valorImovel;
     private int prazoFinanciamento; 
     private double taxaJurosAnual;
@@ -14,6 +15,8 @@ public abstract class Financiamento {
         this.prazoFinanciamento = prazoFinanciamento;
         this.taxaJurosAnual = taxaJurosAnual;
     }
+
+    public Financiamento() {}
 
     public double calcularPagamentoMensal() {
         int prazoEmMeses = prazoFinanciamento * 12; 
