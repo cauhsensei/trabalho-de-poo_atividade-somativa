@@ -6,7 +6,7 @@ public class Apartamento extends Financiamento {
     private int numeroVagasGaragem;
     private int numeroAndar;
 
-    // Construtor padrão exigido para deserialização
+    //construtor 
     public Apartamento() {
         super();
     }

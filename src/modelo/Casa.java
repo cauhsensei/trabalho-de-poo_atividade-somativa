@@ -9,7 +9,7 @@ public class Casa extends Financiamento {
     private double tamanhoTerreno;
     private static final double VALOR_SEGURO = 80.0;
 
-    // Construtor padrão exigido para deserialização
+    //construtor 
     public Casa() {
         super();
     }

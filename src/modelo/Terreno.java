@@ -3,9 +3,9 @@ package modelo;
 import java.text.DecimalFormat;
 
 public class Terreno extends Financiamento {
-    private String tipoZona; // Ex: "Residencial" ou "Comercial"
+    private String tipoZona; 
 
-    // Construtor padrão exigido para deserialização
+    //construtor 
     public Terreno() {
         super();
     }

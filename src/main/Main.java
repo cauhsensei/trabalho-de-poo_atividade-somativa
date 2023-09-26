@@ -28,7 +28,6 @@ public class Main {
         interfaceUsuario.salvarDadosSerializados(financiamentos);
         interfaceUsuario.salvarFinanciamentoEmTexto(financiamentos);
 
-        // Para ler os dados serializados e exibi-los:
         ArrayList<Financiamento> financiamentosLidos = interfaceUsuario.lerDadosSerializados();
         for (Financiamento f : financiamentosLidos) {
             System.out.println(f.toString());

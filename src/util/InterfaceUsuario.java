@@ -159,7 +159,7 @@ public void salvarFinanciamentoEmTexto(ArrayList<Financiamento> financiamentos) 
                 return scanner.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, digite um número válido.");
-                scanner.next(); // Limpar o buffer do scanner
+                scanner.next(); // limpandom o scanner
             }
         }
     }

@@ -41,7 +41,7 @@ public abstract class Financiamento implements Serializable {
         return taxaJurosAnual;
     }
 
-    // Método para mostrar na tela os dados do financiamento
+    // dados do financiamento
     public void exibirDadosFinanciamento() {
         DecimalFormat df = new DecimalFormat("#.00");
 
